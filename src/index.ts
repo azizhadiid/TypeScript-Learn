@@ -1,36 +1,46 @@
-let say: string;
-say = "Hello";
-console.log(say);
+// Implisit Variabel
+let x = 10;
+let y = "Hello";
+console.log(x, y);
 
-function tambah(a: number, b: number): number {
-    return a + b;
-}
-console.log(tambah(1, 2));
+// Explicit Variable
+let z: number;
+z = 10;
+let w: string = "hello";
+console.log(z, w);
 
-let mobil: {
-    merk: string; tahun: number
-};
-mobil = {
-    merk: "Toyota",
-    tahun: 2020,
-};
-console.log(mobil.merk);
+// Untuk Membuat Variable
+// let, const, var
 
-function contoh(): MethodDecorator {
-    return function (
-        target: Object,
-        propertyKey: string | symbol,
-        descriptor: PropertyDescriptor
-    ) {
-        console.log("Contoh dijalankan");
-    };
-}
+let a = 10;
+console.log(a);
 
-class Example {
-    @contoh()
-    method() {
-        console.log("Method dipanggil");
+var b = 20;
+console.log(b);
+
+const c = 30;
+console.log(c);
+
+// Cangkupan untuk mengetes cangkupan variable
+function testVar() {
+    var d = 10;
+    if (true) {
+        var d = 20; // mengubah nilai
+        console.log(d);
     }
+    console.log(d);
 }
 
-new Example().method();
+testVar();
+
+// Menggunakan let
+function testLet() {
+    let e = 10;
+    if (true) {
+        let e = 20; // mengubah nilai
+        console.log(e);
+    }
+    console.log(e);
+}
+
+testLet();

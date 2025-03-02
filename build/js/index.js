@@ -1,40 +1,38 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-let say;
-say = "Hello";
-console.log(say);
-function tambah(a, b) {
-    return a + b;
-}
-console.log(tambah(1, 2));
-let mobil;
-mobil = {
-    merk: "Toyota",
-    tahun: 2020,
-};
-console.log(mobil.merk);
-function contoh() {
-    return function (target, propertyKey, descriptor) {
-        console.log("Contoh dijalankan");
-    };
-}
-class Example {
-    method() {
-        console.log("Method dipanggil");
+// Implisit Variabel
+let x = 10;
+let y = "Hello";
+console.log(x, y);
+// Explicit Variable
+let z;
+z = 10;
+let w = "hello";
+console.log(z, w);
+// Untuk Membuat Variable
+// let, const, var
+let a = 10;
+console.log(a);
+var b = 20;
+console.log(b);
+const c = 30;
+console.log(c);
+// Cangkupan untuk mengetes cangkupan variable
+function testVar() {
+    var d = 10;
+    if (true) {
+        var d = 20; // mengubah nilai
+        console.log(d);
     }
+    console.log(d);
 }
-__decorate([
-    contoh(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], Example.prototype, "method", null);
-new Example().method();
+testVar();
+// Menggunakan let
+function testLet() {
+    let e = 10;
+    if (true) {
+        let e = 20; // mengubah nilai
+        console.log(e);
+    }
+    console.log(e);
+}
+testLet();
