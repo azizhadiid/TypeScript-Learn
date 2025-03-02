@@ -1,46 +1,47 @@
-// Implisit Variabel
-let x = 10;
-let y = "Hello";
-console.log(x, y);
+// type data number
+let x: number;
+x = 10; //nilangan bulat
+x = 3.14; //bilangan desimal
+x = 0b1010; //bilangan biner
+x = 0o12; //bilangan octal
+x = 0x12; //bilangan hexadecimal
 
-// Explicit Variable
-let z: number;
-z = 10;
-let w: string = "hello";
-console.log(z, w);
+// type data string
+let y: string;
+y = "Hello World";
+y = "Hello World";
+y = `Hello World${x}`;
 
-// Untuk Membuat Variable
-// let, const, var
+// type data boolean
+let z: boolean;
+z = true;
+z = false;
 
-let a = 10;
-console.log(a);
+// bigint
+let big: bigint;
+big = 100n;
 
-var b = 20;
-console.log(b);
+// symbol
+let symbol: symbol;
+symbol = Symbol("Hello World");
 
-const c = 30;
-console.log(c);
+// null
+let nul: null;
+nul = null;
 
-// Cangkupan untuk mengetes cangkupan variable
-function testVar() {
-    var d = 10;
-    if (true) {
-        var d = 20; // mengubah nilai
-        console.log(d);
-    }
-    console.log(d);
-}
+// undefined
+let und: undefined;
+und = undefined;
 
-testVar();
+let nik: string = "nik001";
+let namaLengkap: string = "Nikolaus";
+let indexLembur: number = 160;
+let basicSalary: number = 100000;
 
-// Menggunakan let
-function testLet() {
-    let e = 10;
-    if (true) {
-        let e = 20; // mengubah nilai
-        console.log(e);
-    }
-    console.log(e);
-}
+let uangLembur: number = (indexLembur / 173) * basicSalary;
 
-testLet();
+console.log("NIk = " + nik);
+console.log("Nama Lengkap = " + namaLengkap);
+console.log("Index Lembur = " + indexLembur);
+console.log("Basic Salary = " + basicSalary);
+console.log("Uang Lembur = " + uangLembur.toLocaleString("id-ID"));
