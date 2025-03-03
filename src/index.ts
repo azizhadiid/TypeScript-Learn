@@ -1,47 +1,62 @@
-// type data number
-let x: number;
-x = 10; //nilangan bulat
-x = 3.14; //bilangan desimal
-x = 0b1010; //bilangan biner
-x = 0o12; //bilangan octal
-x = 0x12; //bilangan hexadecimal
+let a: any;
+a = 1;
+a = "1";
+a = true;
+a = {};
+a = [];
+a = null;
+a = undefined;
 
-// type data string
-let y: string;
-y = "Hello World";
-y = "Hello World";
-y = `Hello World${x}`;
+console.log(a);
 
-// type data boolean
-let z: boolean;
-z = true;
-z = false;
+// Tipe data any di tempatkan pada array
+let arr: any[] = ["Jon", 121, true];
+arr[0] = "Jon Wik";
+arr.push("Smit");
+console.log(arr);
 
-// bigint
-let big: bigint;
-big = 100n;
+// type data unknown
+let w: unknown = 1;
+w = "string";
+w = {
+    runNonExixtsMethod: () => {
+        console.log("runNonExixtsMethod contoh 2");
+    },
+} as { runNonExixtsMethod: () => void };
+if (typeof w === "object" && w !== null) {
+    (w as { runNonExixtsMethod: () => void }).runNonExixtsMethod();
+}
 
-// symbol
-let symbol: symbol;
-symbol = Symbol("Hello World");
+// type data never
+function throwError(errorMsg: string): never {
+    throw new Error(errorMsg);
+}
+// throwError("error");
 
-// null
-let nul: null;
-nul = null;
+function assertNever(x: never): never {
+    throw new Error("error" + x);
+}
 
-// undefined
-let und: undefined;
-und = undefined;
+function printAnimal(animal: "cat" | "dog" | "bird"): void {
+    switch (animal) {
+        case "cat":
+            console.log("meow");
+            break;
+        case "dog":
+            console.log("woof");
+            break;
+        case "bird":
+            console.log("tweet");
+            break;
+        default:
+            assertNever(animal);
+    }
+}
 
-let nik: string = "nik001";
-let namaLengkap: string = "Nikolaus";
-let indexLembur: number = 160;
-let basicSalary: number = 100000;
+printAnimal("cat");
 
-let uangLembur: number = (indexLembur / 173) * basicSalary;
+let nothing: never;
 
-console.log("NIk = " + nik);
-console.log("Nama Lengkap = " + namaLengkap);
-console.log("Index Lembur = " + indexLembur);
-console.log("Basic Salary = " + basicSalary);
-console.log("Uang Lembur = " + uangLembur.toLocaleString("id-ID"));
+// nothing= null;
+// nothing= undefined;
+// nothing="hello";
