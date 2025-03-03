@@ -1,62 +1,73 @@
-let a: any;
-a = 1;
-a = "1";
-a = true;
-a = {};
-a = [];
-a = null;
-a = undefined;
+import { Accunt } from "./entity/Accunt";
+import { Animal } from "./entity/Animal";
+import { Shape } from "./entity/Shape";
 
-console.log(a);
+//membuat objek
+let animal = new Animal("Lion", 10);
+animal.showInfo();
 
-// Tipe data any di tempatkan pada array
-let arr: any[] = ["Jon", 121, true];
-arr[0] = "Jon Wik";
-arr.push("Smit");
-console.log(arr);
-
-// type data unknown
-let w: unknown = 1;
-w = "string";
-w = {
-    runNonExixtsMethod: () => {
-        console.log("runNonExixtsMethod contoh 2");
-    },
-} as { runNonExixtsMethod: () => void };
-if (typeof w === "object" && w !== null) {
-    (w as { runNonExixtsMethod: () => void }).runNonExixtsMethod();
-}
-
-// type data never
-function throwError(errorMsg: string): never {
-    throw new Error(errorMsg);
-}
-// throwError("error");
-
-function assertNever(x: never): never {
-    throw new Error("error" + x);
-}
-
-function printAnimal(animal: "cat" | "dog" | "bird"): void {
-    switch (animal) {
-        case "cat":
-            console.log("meow");
-            break;
-        case "dog":
-            console.log("woof");
-            break;
-        case "bird":
-            console.log("tweet");
-            break;
-        default:
-            assertNever(animal);
+class Dog extends Animal {
+    // deklarasikan property
+    breed: string;
+    constructor(name: string, age: number, breed: string) {
+        super(name, age);
+        this.breed = breed;
+    }
+    showInfo() {
+        super.showInfo();
+        console.log(`My breed is ${this.breed}`);
     }
 }
 
-printAnimal("cat");
+let dog = new Dog("Max", 10, "German Shepherd");
+dog.showInfo();
 
-let nothing: never;
+let account = new Accunt(1, "Max", 100);
+account.id = 100;
+account.deposit(100000);
+console.log(account);
 
-// nothing= null;
-// nothing= undefined;
-// nothing="hello";
+class Circle extends Shape {
+    private _radius: number;
+    constructor(color: string, radius: number) {
+        super(color);
+        this._radius = radius;
+    }
+
+    getArea(): number {
+        return Math.PI * this._radius * this._radius;
+    }
+
+    showInfo(): void {
+        super.showInfo();
+        console.log(`My radius is ${this.getArea()}`);
+    }
+}
+
+class Ractangle extends Shape {
+    private _width: number;
+    private _height: number;
+    constructor(color: string, width: number, height: number) {
+        super(color);
+        this._width = width;
+        this._height = height;
+    }
+
+    getArea(): number {
+        super.getArea();
+        return this._width * this._height;
+    }
+
+    showInfo(): void {
+        super.showInfo();
+        console.log(`My width is ${this.getArea()}`);
+    }
+}
+
+let shape1: Shape = new Circle("red", 10);
+let shape2: Shape = new Ractangle("blue", 10, 10);
+
+console.log(shape1.getArea());
+console.log(shape2.getArea());
+shape1.showInfo();
+shape2.showInfo();
