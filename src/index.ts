@@ -1,108 +1,103 @@
-function diplay() {
-    console.log("Hello World");
+interface IEemployee {
+    empCode: number;
+    empName: string;
+    getSalary: (empCode: number) => number;
 }
 
-diplay();
-
-function sum(x: number, y: number): number {
-    return x + y;
-}
-
-console.log(sum(1, 2));
-
-let greeting = function () {
-    console.log("Hello World");
-};
-
-greeting();
-
-let sum2 = function (x: number, y: number): number {
-    return x + y;
-};
-console.log(sum2(1, 2));
-
-function greet(greeting: string, name: string) {
-    console.log(`${greeting} ${name}`);
-}
-greet("Hello", "World");
-// greet("Hello");
-
-function greet2(greeting: string, name?: string) {
-    console.log(`${greeting} ${name}`);
-}
-
-greet2("Hello");
-greet2("Hello", "World");
-
-//default parameter
-function applyDiscount(price: number, discount: number = 0.05): number {
-    return price * (1 - discount);
-}
-console.log(applyDiscount(100));
-console.log(applyDiscount(100, 0.1));
-
-function getDay(
-    year: number = new Date().getFullYear(),
-    month: number
-): number {
-    let day = 0;
-    switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            day = 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            day = 30;
-            break;
-        case 2:
-            if ((year % 4 == 0 && !(year % 100 == 0)) || year % 400 == 0) {
-                day = 29;
-            } else {
-                day = 28;
-            }
-            break;
-        default:
-            throw Error("Invalid month");
+class Employee implements IEemployee {
+    empCode: number;
+    empName: string;
+    constructor(empCode: number, empName: string) {
+        this.empCode = empCode;
+        this.empName = empName;
     }
-    return day;
-}
 
-console.log(getDay(2020, 2));
-console.log(getDay(undefined, 2));
-
-function sumz(...numbers: number[]): number {
-    let result = 0;
-    for (let num of numbers) {
-        result += num;
+    getSalary(empCode: number): number {
+        if (empCode === this.empCode) {
+            return 1000;
+        }
+        return 0;
     }
-    return result;
 }
 
-console.log(sumz());
-console.log(sumz(1, 2, 3));
+let emp = new Employee(1, "John");
+console.log(emp.getSalary(1));
 
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-
-function add(a: any, b: any) {
-    return a + b;
+interface Person {
+    name: string;
+    age: number;
 }
 
-console.log(add(1, 2));
-console.log(add("Hello ", "world"));
+let p1: Person = { name: "John", age: 30 };
+console.log(p1.name);
 
-let tambah = (x: number, y: number): number => {
-    return x + y;
+interface Greeting {
+    (name: string): string;
+}
+
+let hello: Greeting = (name: string) => {
+    return "Hello " + name;
 };
-console.log(tambah(1, 2));
 
-let tabbah2 = (x: number, y: number) => x + y;
-console.log(tabbah2(1, 2));
+console.log(hello("John"));
+
+interface NumberArray {
+    [index: number]: number;
+}
+
+let arr1: NumberArray = [1, 2, 3];
+console.log(arr1);
+
+interface SquareConfig {
+    color?: string;
+    width?: number;
+}
+
+function CreateSquare(config: SquareConfig): { color: string; area: number } {
+    let newSquare = { color: "white", area: 100 };
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+}
+
+let mySquare = CreateSquare({ color: "black" });
+console.log(mySquare);
+
+interface Point {
+    readonly x: number;
+    readonly y: number;
+}
+
+let pp1: Point = { x: 10, y: 20 };
+console.log(pp1.x);
+
+interface Shape {
+    area(): number;
+}
+
+interface Colorful {
+    color: string;
+}
+
+interface Circle extends Shape, Colorful {
+    radius: number;
+}
+
+class Coba implements Circle {
+    color: string;
+    radius: number;
+    constructor(color: string, radius: number) {
+        this.color = color;
+        this.radius = radius;
+    }
+    area(): number {
+        return this.radius * this.radius;
+    }
+}
+
+let coba = new Coba("red", 10);
+console.log(coba.area());
