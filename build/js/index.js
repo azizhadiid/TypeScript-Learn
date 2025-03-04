@@ -1,58 +1,86 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Accunt_1 = require("./entity/Accunt");
-const Animal_1 = require("./entity/Animal");
-const Shape_1 = require("./entity/Shape");
-//membuat objek
-let animal = new Animal_1.Animal("Lion", 10);
-animal.showInfo();
-class Dog extends Animal_1.Animal {
-    constructor(name, age, breed) {
-        super(name, age);
-        this.breed = breed;
-    }
-    showInfo() {
-        super.showInfo();
-        console.log(`My breed is ${this.breed}`);
-    }
+function diplay() {
+    console.log("Hello World");
 }
-let dog = new Dog("Max", 10, "German Shepherd");
-dog.showInfo();
-let account = new Accunt_1.Accunt(1, "Max", 100);
-account.id = 100;
-account.deposit(100000);
-console.log(account);
-class Circle extends Shape_1.Shape {
-    constructor(color, radius) {
-        super(color);
-        this._radius = radius;
-    }
-    getArea() {
-        return Math.PI * this._radius * this._radius;
-    }
-    showInfo() {
-        super.showInfo();
-        console.log(`My radius is ${this.getArea()}`);
-    }
+diplay();
+function sum(x, y) {
+    return x + y;
 }
-class Ractangle extends Shape_1.Shape {
-    constructor(color, width, height) {
-        super(color);
-        this._width = width;
-        this._height = height;
-    }
-    getArea() {
-        super.getArea();
-        return this._width * this._height;
-    }
-    showInfo() {
-        super.showInfo();
-        console.log(`My width is ${this.getArea()}`);
-    }
+console.log(sum(1, 2));
+let greeting = function () {
+    console.log("Hello World");
+};
+greeting();
+let sum2 = function (x, y) {
+    return x + y;
+};
+console.log(sum2(1, 2));
+function greet(greeting, name) {
+    console.log(`${greeting} ${name}`);
 }
-let shape1 = new Circle("red", 10);
-let shape2 = new Ractangle("blue", 10, 10);
-console.log(shape1.getArea());
-console.log(shape2.getArea());
-shape1.showInfo();
-shape2.showInfo();
+greet("Hello", "World");
+// greet("Hello");
+function greet2(greeting, name) {
+    console.log(`${greeting} ${name}`);
+}
+greet2("Hello");
+greet2("Hello", "World");
+//default parameter
+function applyDiscount(price, discount = 0.05) {
+    return price * (1 - discount);
+}
+console.log(applyDiscount(100));
+console.log(applyDiscount(100, 0.1));
+function getDay(year = new Date().getFullYear(), month) {
+    let day = 0;
+    switch (month) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            day = 31;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            day = 30;
+            break;
+        case 2:
+            if ((year % 4 == 0 && !(year % 100 == 0)) || year % 400 == 0) {
+                day = 29;
+            }
+            else {
+                day = 28;
+            }
+            break;
+        default:
+            throw Error("Invalid month");
+    }
+    return day;
+}
+console.log(getDay(2020, 2));
+console.log(getDay(undefined, 2));
+function sumz(...numbers) {
+    let result = 0;
+    for (let num of numbers) {
+        result += num;
+    }
+    return result;
+}
+console.log(sumz());
+console.log(sumz(1, 2, 3));
+function add(a, b) {
+    return a + b;
+}
+console.log(add(1, 2));
+console.log(add("Hello ", "world"));
+let tambah = (x, y) => {
+    return x + y;
+};
+console.log(tambah(1, 2));
+let tabbah2 = (x, y) => x + y;
+console.log(tabbah2(1, 2));
