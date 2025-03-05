@@ -1,8 +1,23 @@
-import { Mydata } from "./Mahasiswa";
-import { Mydata2 } from "./Mahasiswa2";
+class Employee {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    public greet(): void {
+        console.log("Hello, I am ".concat(this.name));
+    }
 
-let mhs1 = new Mydata.Mahasiswa("Rizky 2");
-console.log(mhs1.nama_1);
+    public getName(): string {
+        return this.name;
+    }
 
-let mhs2 = new Mydata2.Mahasiswa("Rizky xx4");
-console.log(mhs2.nama_1);
+    public setName(name: string): void {
+        this.name = name;
+    }
+}
+
+let emp = new Employee("Rizky");
+emp.greet();
+console.log(emp.getName());
+emp.setName("Rizky Kurniawan");
+console.log(emp.getName());

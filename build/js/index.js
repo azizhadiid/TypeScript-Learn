@@ -1,8 +1,20 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Mahasiswa_1 = require("./Mahasiswa");
-const Mahasiswa2_1 = require("./Mahasiswa2");
-let mhs1 = new Mahasiswa_1.Mydata.Mahasiswa("Rizky 2");
-console.log(mhs1.nama_1);
-let mhs2 = new Mahasiswa2_1.Mydata2.Mahasiswa("Rizky xx4");
-console.log(mhs2.nama_1);
+class Employee {
+    constructor(name) {
+        this.name = name;
+    }
+    greet() {
+        console.log("Hello, I am ".concat(this.name));
+    }
+    getName() {
+        return this.name;
+    }
+    setName(name) {
+        this.name = name;
+    }
+}
+let emp = new Employee("Rizky");
+emp.greet();
+console.log(emp.getName());
+emp.setName("Rizky Kurniawan");
+console.log(emp.getName());
