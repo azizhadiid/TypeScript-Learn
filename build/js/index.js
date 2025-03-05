@@ -1,48 +1,8 @@
 "use strict";
-class Employee {
-    constructor(empCode, empName) {
-        this.empCode = empCode;
-        this.empName = empName;
-    }
-    getSalary(empCode) {
-        if (empCode === this.empCode) {
-            return 1000;
-        }
-        return 0;
-    }
-}
-let emp = new Employee(1, "John");
-console.log(emp.getSalary(1));
-let p1 = { name: "John", age: 30 };
-console.log(p1.name);
-let hello = (name) => {
-    return "Hello " + name;
-};
-console.log(hello("John"));
-let arr1 = [1, 2, 3];
-console.log(arr1);
-function CreateSquare(config) {
-    let newSquare = { color: "white", area: 100 };
-    if (config.color) {
-        newSquare.color = config.color;
-    }
-    if (config.width) {
-        newSquare.area = config.width * config.width;
-    }
-    return newSquare;
-}
-let mySquare = CreateSquare({ color: "black" });
-console.log(mySquare);
-let pp1 = { x: 10, y: 20 };
-console.log(pp1.x);
-class Coba {
-    constructor(color, radius) {
-        this.color = color;
-        this.radius = radius;
-    }
-    area() {
-        return this.radius * this.radius;
-    }
-}
-let coba = new Coba("red", 10);
-console.log(coba.area());
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mahasiswa_1 = require("./Mahasiswa");
+const Mahasiswa2_1 = require("./Mahasiswa2");
+let mhs1 = new Mahasiswa_1.Mydata.Mahasiswa("Rizky 2");
+console.log(mhs1.nama_1);
+let mhs2 = new Mahasiswa2_1.Mydata2.Mahasiswa("Rizky xx4");
+console.log(mhs2.nama_1);
