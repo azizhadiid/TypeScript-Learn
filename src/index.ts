@@ -1,65 +1,101 @@
-abstract class Hewan {
-    abstract name: string;
-    age: number;
-    constructor(age: number) {
+// access modifier
+// 1. private -> hanya bisa diacess oleh class itu sendiri
+// 2. public -> bisa diacess oleh semua class
+// 3. protected -> bisa diacess oleh class itu sendiri dan class turunannya saja
+// 4. tanfa definisi -> berlaku defaulat yaitu public
+
+class Account {
+    private _id: number;
+    private _name: string;
+    private _balance: number;
+    constructor(id: number, name: string, balance: number) {
+        this._id = id;
+        this._name = name;
+        this._balance = balance;
+    }
+    public get balance(): number {
+        return this._balance;
+    }
+    public set balance(value: number) {
+        this._balance = value;
+    }
+    public get name(): string {
+        return this._name;
+    }
+    public set name(value: string) {
+        this._name = value;
+    }
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
+}
+
+let account = new Account(1, "abc", 1000);
+console.log(account.balance);
+
+class Bnatang {
+    public name: string;
+    public age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
         this.age = age;
     }
-
-    abstract bersuara(): void;
-
-    makan() {
-        console.log(`${this.name} sedang makan`);
+    showInfo() {
+        console.log(`Name: ${this.name}, Age: ${this.age}`);
     }
 }
 
-class Kucing extends Hewan {
-    name: string;
+let binatang = new Bnatang("abc", 10);
+binatang.name = "TEsting Binatang";
+binatang.showInfo();
+
+class Animal {
+    protected name: string;
+    protected age: number;
     constructor(name: string, age: number) {
-        super(age);
         this.name = name;
+        this.age = age;
     }
-
-    bersuara() {
-        console.log("Miau");
-    }
-}
-
-let kucing = new Kucing("Kucing", 2);
-kucing.bersuara();
-kucing.makan();
-
-abstract class Kendaraan {
-    abstract roda: number;
-    abstract klakson(): void;
-    jalan() {
-        console.log("Jalan");
+    showInfo() {
+        console.log(`Name: ${this.name}, Age: ${this.age}`);
     }
 }
 
-interface BahanBakar {
-    bensin: number;
-    isiBensin(liter: number): void;
-}
+// let animal = new Animal("abc", 10);
+// animal.name = "Kucing";
 
-class Mobil extends Kendaraan implements BahanBakar {
-    roda: number;
-    bensin: number;
-    constructor(roda: number, bensin: number) {
-        super();
-        this.roda = roda;
-        this.bensin = bensin;
+class Dog extends Animal {
+    public breed: string;
+    constructor(name: string, age: number, breed: string) {
+        super(name, age);
+        this.breed = breed;
     }
-
-    isiBensin(liter: number) {
-        this.bensin += liter;
-    }
-
-    klakson(): void {
-        console.log("Klakson Mobil");
+    showInfo2() {
+        super.showInfo();
+        console.log(
+            `Breed: ${this.breed} dan Age: ${this.age} dan Name: ${this.name}`
+        );
     }
 }
 
-let mobil = new Mobil(4, 100);
-mobil.klakson();
-mobil.isiBensin(50);
-mobil.jalan()
+let dog = new Dog("abc", 10, "Lab");
+dog.showInfo2();
+
+class Manusia {
+    nama: string;
+
+    constructor(nama: string) {
+        this.nama = nama;
+    }
+
+    setNama(nama: string) {
+        this.nama = nama;
+    }
+}
+
+let mhs = new Manusia("abc");
+mhs.setNama("Muhammad");
+console.log(mhs.nama);
