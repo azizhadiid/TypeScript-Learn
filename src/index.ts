@@ -1,23 +1,65 @@
-class Employee {
-    name: string;
-    constructor(name: string) {
-        this.name = name;
-    }
-    public greet(): void {
-        console.log("Hello, I am ".concat(this.name));
+abstract class Hewan {
+    abstract name: string;
+    age: number;
+    constructor(age: number) {
+        this.age = age;
     }
 
-    public getName(): string {
-        return this.name;
-    }
+    abstract bersuara(): void;
 
-    public setName(name: string): void {
-        this.name = name;
+    makan() {
+        console.log(`${this.name} sedang makan`);
     }
 }
 
-let emp = new Employee("Rizky");
-emp.greet();
-console.log(emp.getName());
-emp.setName("Rizky Kurniawan");
-console.log(emp.getName());
+class Kucing extends Hewan {
+    name: string;
+    constructor(name: string, age: number) {
+        super(age);
+        this.name = name;
+    }
+
+    bersuara() {
+        console.log("Miau");
+    }
+}
+
+let kucing = new Kucing("Kucing", 2);
+kucing.bersuara();
+kucing.makan();
+
+abstract class Kendaraan {
+    abstract roda: number;
+    abstract klakson(): void;
+    jalan() {
+        console.log("Jalan");
+    }
+}
+
+interface BahanBakar {
+    bensin: number;
+    isiBensin(liter: number): void;
+}
+
+class Mobil extends Kendaraan implements BahanBakar {
+    roda: number;
+    bensin: number;
+    constructor(roda: number, bensin: number) {
+        super();
+        this.roda = roda;
+        this.bensin = bensin;
+    }
+
+    isiBensin(liter: number) {
+        this.bensin += liter;
+    }
+
+    klakson(): void {
+        console.log("Klakson Mobil");
+    }
+}
+
+let mobil = new Mobil(4, 100);
+mobil.klakson();
+mobil.isiBensin(50);
+mobil.jalan()
