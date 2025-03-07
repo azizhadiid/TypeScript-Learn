@@ -1,66 +1,30 @@
-class Circle {
-    readonly radius: number;
-    constructor(radius: number) {
-        this.radius = radius;
-    }
+class MathUtil {
+    static PI: number = 3.14;
 
-    getArea() {
-        return Math.PI * this.radius * this.radius;
+    static getCalculateArea(radius: number): number {
+        return MathUtil.PI * radius * radius;
     }
 }
 
-let circle = new Circle(10);
-console.log(circle.radius);
-console.log(circle.getArea());
+console.log(MathUtil.PI);
+console.log(MathUtil.getCalculateArea(5));
 
-// readonly dalan interface
-interface Person {
-    readonly name: string;
-    readonly hobbies: ReadonlyArray<string>;
+class Employee {
+    static headcount: number = 0;
+    constructor(
+        private firstName: string,
+        private lastName: string,
+        private jobTitle: string
+    ) {
+        Employee.headcount++;
+    }
+    public static getHeadCount() {
+        return Employee.headcount;
+    }
 }
 
-let person: Person = {
-    name: "John",
-    hobbies: ["Sports", "Cooking"],
-};
-console.log(person.hobbies);
-console.log(person.name);
+let jon = new Employee("Jon", "Snow", "King");
+let anna = new Employee("Anna", "Snow", "Queen");
 
-// person.hobbies.push("Sports");
-// person.name = "Jane";
-
-// readonly untuk interface type
-
-interface IEmployee {
-    empCode: number;
-    empName: string;
-}
-
-let emp1: Readonly<IEmployee> = {
-    empCode: 1,
-    empName: "John",
-};
-
-console.log(emp1);
-
-// emp1.empCode = 2;
-// emp1.empName = "Jane";
-
-// readonly untuk generik
-
-type ReadonlyPoint<T> = {
-    readonly [K in keyof T]: T[K];
-};
-
-type Point = {
-    x: number;
-    y: number;
-};
-
-type ReadonlyPoint2D = ReadonlyPoint<Point>;
-let point: ReadonlyPoint2D = {
-    x: 10,
-    y: 20,
-};
-
-console.log(point);
+console.log("nilai = " + Employee.getHeadCount());
+console.log("nilai = " + Employee.headcount);
