@@ -1,62 +1,58 @@
-function identity<T>(arg: T): T {
-    return arg;
+let sum: number = 0;
+
+for (let i: number = 1; i <= 10; i++) {
+    sum += i;
+}
+console.log(sum);
+
+let fruits: string[] = ["Apple", "Banana", "Orange"];
+for (let fruit of fruits) {
+    console.log(fruit);
 }
 
-let output = identity<string>("hello");
-console.log(output);
+let person: any = {
+    name: "Budi",
+    age: 25,
+    gender: "male",
+};
 
-let output2 = identity<number>(123);
-console.log(output2);
-
-let output3 = identity("<boolean>(true)");
-console.log(output3);
-
-interface Lengthwise {
-    length: number;
+for (let key in person) {
+    console.log(key + " : " + person[key]);
 }
 
-function loggingIdentity<T extends Lengthwise>(arg: T): T {
-    console.log(arg.length);
-    return arg;
+let i: number = 1;
+
+while (i <= 5) {
+    console.log(i);
+    i++;
 }
 
-loggingIdentity({ length: 10, value: 3 });
+i = 1;
+do {
+    console.log(i);
+    i++;
+} while (i <= 5);
 
+i = 1;
 
-interface IProcessor<T> {
-    result: T;
-    process: (a: T, b: T) => T;
-}
-
-class NumberProcessor implements IProcessor<number> {
-    result: number = 0;
-
-    process(a: number, b: number): number {
-        this.result = a + b; // ✅ Perbaiki 'B' menjadi 'b'
-        return this.result;
+while (i <= 5) {
+    console.log(i);
+    i++;
+    if (i > 3) {
+        break;
     }
 }
 
-let np = new NumberProcessor();
-let hasil = np.process(10, 20);
-console.log(hasil); // 30
+let day: string = "monday";
 
-class Stack<T> {
-    private items: T[] = [];
-
-    push(element: T): void {
-        this.items.push(element);
-    }
-
-    pop(): T | undefined {
-        return this.items.pop();
-    }
+switch (day) {
+    case "monday":
+        console.log("Today is Monday");
+        break;
+    case "tuesday":
+        console.log("Today is Tuesday");
+        break;
+    default:
+        console.log("Invalid day");
+        break;
 }
-
-// ✅ Pindahkan pembuatan objek ke luar class
-let stack = new Stack<number>();
-stack.push(20);
-stack.push(30);
-
-console.log(stack.pop()); // 30
-console.log(stack.pop()); // 20
