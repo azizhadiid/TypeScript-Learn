@@ -1,58 +1,71 @@
-let sum: number = 0;
+let x: number = 10;
+let y: number = 20;
 
-for (let i: number = 1; i <= 10; i++) {
-    sum += i;
-}
-console.log(sum);
-
-let fruits: string[] = ["Apple", "Banana", "Orange"];
-for (let fruit of fruits) {
-    console.log(fruit);
+if (x > y) {
+    console.log("x lebih besar dari y");
+} else {
+    console.log("x tidak lebih besar dari y");
 }
 
-let person: any = {
-    name: "Budi",
-    age: 25,
-    gender: "male",
-};
-
-for (let key in person) {
-    console.log(key + " : " + person[key]);
+if (x > y) {
+    console.log("x lebih besar dari y");
+} else if (x < y) {
+    console.log("x kurang dari y");
+} else {
+    console.log("x sama dengan y");
 }
 
-let i: number = 1;
+x > y
+    ? console.log("x lebih besar dari y")
+    : console.log("x tidak lebih besar dari y");
 
-while (i <= 5) {
-    console.log(i);
-    i++;
-}
-
-i = 1;
-do {
-    console.log(i);
-    i++;
-} while (i <= 5);
-
-i = 1;
-
-while (i <= 5) {
-    console.log(i);
-    i++;
-    if (i > 3) {
+let dey: string = "Monday";
+switch (dey) {
+    case "Monday":
+        console.log("Selasa");
         break;
-    }
-}
-
-let day: string = "monday";
-
-switch (day) {
-    case "monday":
-        console.log("Today is Monday");
+    case "Tuesday":
+        console.log("Rabu");
         break;
-    case "tuesday":
-        console.log("Today is Tuesday");
+    case "Wednesday":
+        console.log("Kamis");
+        break;
+    case "Thursday":
+        console.log("Jumat");
+        break;
+    case "Friday":
+        console.log("Sabtu");
+        break;
+    case "Saturday":
+        console.log("Minggu");
+        break;
+    case "Sunday":
+        console.log("Senin");
         break;
     default:
-        console.log("Invalid day");
+        console.log("Tidak ada hari");
+}
+
+let month: number = 2;
+switch (month) {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        console.log("bulan ini 31 hari");
         break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        console.log("bulan ini 30 hari");
+        break;
+    case 2:
+        console.log("bulan ini 28 atau 29 hari");
+        break;
+    default:
+        console.log("bulan ini tidak ada");
 }
