@@ -1,63 +1,69 @@
 "use strict";
-// cara mendeklarasikan array
-// 1. menggunakan kurung siku
-let fruits = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits);
-let fruits2 = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits2);
-let arr = [1, 3, "Apple", "Orange", true];
-console.log(arr);
-let arr2 = [1, 3, "Apple", "Orange", true];
-console.log(arr2);
-let fruits3;
-fruits3 = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits3);
-let ids;
-ids = [1, 2, 3];
-console.log(ids);
-let values;
-values = ["a", 1];
-console.log(values);
-let values2;
-values2 = ["a", 1];
-console.log(values2);
-let fruits4 = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits4[0]);
-for (let i = 0; i < fruits4.length; i++) {
-    console.log(fruits4[i]);
+var Direction;
+(function (Direction) {
+    Direction[Direction["Up"] = 0] = "Up";
+    Direction[Direction["Down"] = 1] = "Down";
+    Direction[Direction["Left"] = 2] = "Left";
+    Direction[Direction["Right"] = 3] = "Right";
+})(Direction || (Direction = {}));
+console.log(Direction);
+console.log(Direction.Up);
+var Direction2;
+(function (Direction2) {
+    Direction2[Direction2["Up"] = 1] = "Up";
+    Direction2[Direction2["Down"] = 2] = "Down";
+    Direction2[Direction2["Left"] = 3] = "Left";
+    Direction2[Direction2["Right"] = 4] = "Right";
+})(Direction2 || (Direction2 = {}));
+console.log(Direction2);
+console.log(Direction2.Up);
+var Direction3;
+(function (Direction3) {
+    Direction3[Direction3["Up"] = 1] = "Up";
+    Direction3[Direction3["Down"] = 2] = "Down";
+    Direction3[Direction3["Left"] = 3] = "Left";
+    Direction3[Direction3["Right"] = 4] = "Right";
+})(Direction3 || (Direction3 = {}));
+console.log(Direction3);
+console.log(Direction3.Up);
+var StatusCodes;
+(function (StatusCodes) {
+    StatusCodes[StatusCodes["NotFound"] = 404] = "NotFound";
+    StatusCodes[StatusCodes["BadRequest"] = 400] = "BadRequest";
+    StatusCodes[StatusCodes["InternalServerError"] = 500] = "InternalServerError";
+    StatusCodes[StatusCodes["Succes"] = 200] = "Succes";
+})(StatusCodes || (StatusCodes = {}));
+console.log(StatusCodes);
+console.log(StatusCodes.NotFound);
+var Color;
+(function (Color) {
+    Color["RED"] = "F0F0F0";
+})(Color || (Color = {}));
+console.log(Color.RED);
+var Senum;
+(function (Senum) {
+    Senum["Up"] = "up";
+    Senum["Down"] = "down";
+    Senum["Left"] = "left";
+    Senum["Right"] = "right";
+})(Senum || (Senum = {}));
+console.log(Senum);
+var Response3;
+(function (Response3) {
+    Response3[Response3["No"] = 0] = "No";
+    Response3[Response3["Yes"] = 1] = "Yes";
+})(Response3 || (Response3 = {}));
+function answer(question, response) {
+    console.log(question, response);
 }
-for (let fruit of fruits4) {
-    console.log(fruit);
-}
-fruits4.sort();
-console.log(fruits4);
-console.log(fruits4.reverse());
-console.log(fruits4.indexOf("mangga"));
-console.log(fruits4.concat(["mangga", "pisang"]));
-let empId = 1;
-let empName = "John";
-let employee = [1, "John"];
-console.log(employee);
-let user;
-user = [1, "John", true, 30, "admin"];
-console.log(user);
-let employee2;
-employee2 = [
-    [1, "John"],
-    [2, "Peter"],
-    [3, "Mary"],
-];
-console.log(employee2);
-console.log(employee2[0][0]);
-console.log(employee2[0][1]);
-const readonlyTuple = [1, "John"];
-// readonlyTuple[0] = 2;
-console.log(readonlyTuple);
-let numers;
-numers = ["John", true, 30, 40, 50];
-numers[2] = 400;
-console.log(numers[0]);
-console.log(numers[1]);
-console.log(numers[2]);
-numers.push(60, "admin");
-console.log(numers);
+answer("Do you like TypeScript", Response3.Yes);
+var Direction4;
+(function (Direction4) {
+    Direction4[Direction4["Up"] = 0] = "Up";
+    Direction4[Direction4["Down"] = 1] = "Down";
+    Direction4[Direction4["Left"] = 2] = "Left";
+    Direction4[Direction4["Right"] = 3] = "Right";
+})(Direction4 || (Direction4 = {}));
+console.log(Direction4.Up);
+console.log(Direction4[0]);
+console.log(Direction4[3]);

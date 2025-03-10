@@ -1,80 +1,75 @@
-// cara mendeklarasikan array
-// 1. menggunakan kurung siku
-let fruits = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits);
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+console.log(Direction);
+console.log(Direction.Up);
 
-let fruits2: Array<string> = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits2);
-
-let arr = [1, 3, "Apple", "Orange", true];
-console.log(arr);
-
-let arr2: any = [1, 3, "Apple", "Orange", true];
-console.log(arr2);
-
-let fruits3: Array<string>;
-fruits3 = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits3);
-
-let ids: number[];
-ids = [1, 2, 3];
-console.log(ids);
-
-let values: (string | number)[];
-values = ["a", 1];
-console.log(values);
-
-let values2: Array<string | number>;
-values2 = ["a", 1];
-console.log(values2);
-
-let fruits4 = ["apel", "jeruk", "mangga", "pisang"];
-console.log(fruits4[0]);
-
-for (let i = 0; i < fruits4.length; i++) {
-    console.log(fruits4[i]);
+enum Direction2 {
+    Up = 1,
+    Down,
+    Left,
+    Right,
 }
 
-for (let fruit of fruits4) {
-    console.log(fruit);
+console.log(Direction2);
+console.log(Direction2.Up);
+
+enum Direction3 {
+    Up = 1,
+    Down = 2,
+    Left = 3,
+    Right = 4,
 }
 
-fruits4.sort();
-console.log(fruits4);
-console.log(fruits4.reverse());
-console.log(fruits4.indexOf("mangga"));
-console.log(fruits4.concat(["mangga", "pisang"]));
+console.log(Direction3);
+console.log(Direction3.Up);
 
-let empId: number = 1;
-let empName: string = "John";
+enum StatusCodes {
+    NotFound = 404,
+    BadRequest = 400,
+    InternalServerError = 500,
+    Succes = 200,
+}
 
-let employee: [number, string] = [1, "John"];
-console.log(employee);
+console.log(StatusCodes);
+console.log(StatusCodes.NotFound);
 
-let user: [number, string, boolean, number, string];
-user = [1, "John", true, 30, "admin"];
-console.log(user);
+enum Color {
+    RED = "F0F0F0",
+}
 
-let employee2: [number, string][];
-employee2 = [
-    [1, "John"],
-    [2, "Peter"],
-    [3, "Mary"],
-];
-console.log(employee2);
-console.log(employee2[0][0]);
-console.log(employee2[0][1]);
+console.log(Color.RED);
 
-const readonlyTuple: readonly [number, string] = [1, "John"];
-// readonlyTuple[0] = 2;
-console.log(readonlyTuple);
+enum Senum {
+    Up = 'up',
+    Down = 'down',
+    Left = 'left',
+    Right = 'right',
+}
 
-let numers: [first: string, second: boolean, ...rest: number[]];
-numers = ["John", true, 30, 40, 50];
-numers[2] = 400;
-console.log(numers[0]);
-console.log(numers[1]);
-console.log(numers[2]);
+console.log(Senum);
 
-numers.push(60, "admin");
-console.log(numers);
+enum Response3 {
+    No = 0,
+    Yes = 1,
+}
+
+function answer(question: string, response: Response3) {
+    console.log(question, response);
+}
+
+answer("Do you like TypeScript", Response3.Yes);
+
+enum Direction4 {
+    Up,
+    Down,
+    Left,
+    Right,
+}
+
+console.log(Direction4.Up);
+console.log(Direction4[0]);
+console.log(Direction4[3]);
