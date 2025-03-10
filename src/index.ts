@@ -1,75 +1,52 @@
-enum Direction {
-    Up,
-    Down,
-    Left,
-    Right,
-}
-console.log(Direction);
-console.log(Direction.Up);
+let code: string | number;
+code = "Hello";
+code = 123;
+// code = true;
 
-enum Direction2 {
-    Up = 1,
-    Down,
-    Left,
-    Right,
-}
+let empId: (string | number) | null;
+empId = "ini EMPID";
+empId = 123;
+empId = null;
 
-console.log(Direction2);
-console.log(Direction2.Up);
-
-enum Direction3 {
-    Up = 1,
-    Down = 2,
-    Left = 3,
-    Right = 4,
+function displayType(code: string | number) {
+    if (typeof code === "string") {
+        console.log(code.toUpperCase());
+    } else {
+        console.log(code.toFixed(2));
+    }
 }
 
-console.log(Direction3);
-console.log(Direction3.Up);
+displayType(1234);
+displayType("Hello");
 
-enum StatusCodes {
-    NotFound = 404,
-    BadRequest = 400,
-    InternalServerError = 500,
-    Succes = 200,
+interface Fish {
+    swim(): void;
+    layEggs(): void;
 }
 
-console.log(StatusCodes);
-console.log(StatusCodes.NotFound);
-
-enum Color {
-    RED = "F0F0F0",
+interface Bird {
+    fly(): void;
+    layEggs(): void;
 }
 
-console.log(Color.RED);
-
-enum Senum {
-    Up = 'up',
-    Down = 'down',
-    Left = 'left',
-    Right = 'right',
+function getSmallPet(): Fish | Bird {
+    return {
+        swim: () => {
+            console.log("Swimming");
+        },
+        layEggs: () => {
+            console.log("laying eggs");
+        },
+    };
 }
 
-console.log(Senum);
-
-enum Response3 {
-    No = 0,
-    Yes = 1,
+function isFish(pet: Fish | Bird): pet is Fish {
+    return (pet as Fish).swim !== undefined;
 }
 
-function answer(question: string, response: Response3) {
-    console.log(question, response);
+let pet = getSmallPet();
+if (isFish(pet)) {
+    pet.swim();
+} else {
+    pet.layEggs();
 }
-
-answer("Do you like TypeScript", Response3.Yes);
-
-enum Direction4 {
-    Up,
-    Down,
-    Left,
-    Right,
-}
-
-console.log(Direction4.Up);
-console.log(Direction4[0]);
-console.log(Direction4[3]);
