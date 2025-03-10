@@ -1,70 +1,63 @@
 "use strict";
-let x = 10;
-let y = 20;
-if (x > y) {
-    console.log("x lebih besar dari y");
+// cara mendeklarasikan array
+// 1. menggunakan kurung siku
+let fruits = ["apel", "jeruk", "mangga", "pisang"];
+console.log(fruits);
+let fruits2 = ["apel", "jeruk", "mangga", "pisang"];
+console.log(fruits2);
+let arr = [1, 3, "Apple", "Orange", true];
+console.log(arr);
+let arr2 = [1, 3, "Apple", "Orange", true];
+console.log(arr2);
+let fruits3;
+fruits3 = ["apel", "jeruk", "mangga", "pisang"];
+console.log(fruits3);
+let ids;
+ids = [1, 2, 3];
+console.log(ids);
+let values;
+values = ["a", 1];
+console.log(values);
+let values2;
+values2 = ["a", 1];
+console.log(values2);
+let fruits4 = ["apel", "jeruk", "mangga", "pisang"];
+console.log(fruits4[0]);
+for (let i = 0; i < fruits4.length; i++) {
+    console.log(fruits4[i]);
 }
-else {
-    console.log("x tidak lebih besar dari y");
+for (let fruit of fruits4) {
+    console.log(fruit);
 }
-if (x > y) {
-    console.log("x lebih besar dari y");
-}
-else if (x < y) {
-    console.log("x kurang dari y");
-}
-else {
-    console.log("x sama dengan y");
-}
-x > y
-    ? console.log("x lebih besar dari y")
-    : console.log("x tidak lebih besar dari y");
-let dey = "Monday";
-switch (dey) {
-    case "Monday":
-        console.log("Selasa");
-        break;
-    case "Tuesday":
-        console.log("Rabu");
-        break;
-    case "Wednesday":
-        console.log("Kamis");
-        break;
-    case "Thursday":
-        console.log("Jumat");
-        break;
-    case "Friday":
-        console.log("Sabtu");
-        break;
-    case "Saturday":
-        console.log("Minggu");
-        break;
-    case "Sunday":
-        console.log("Senin");
-        break;
-    default:
-        console.log("Tidak ada hari");
-}
-let month = 2;
-switch (month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-        console.log("bulan ini 31 hari");
-        break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        console.log("bulan ini 30 hari");
-        break;
-    case 2:
-        console.log("bulan ini 28 atau 29 hari");
-        break;
-    default:
-        console.log("bulan ini tidak ada");
-}
+fruits4.sort();
+console.log(fruits4);
+console.log(fruits4.reverse());
+console.log(fruits4.indexOf("mangga"));
+console.log(fruits4.concat(["mangga", "pisang"]));
+let empId = 1;
+let empName = "John";
+let employee = [1, "John"];
+console.log(employee);
+let user;
+user = [1, "John", true, 30, "admin"];
+console.log(user);
+let employee2;
+employee2 = [
+    [1, "John"],
+    [2, "Peter"],
+    [3, "Mary"],
+];
+console.log(employee2);
+console.log(employee2[0][0]);
+console.log(employee2[0][1]);
+const readonlyTuple = [1, "John"];
+// readonlyTuple[0] = 2;
+console.log(readonlyTuple);
+let numers;
+numers = ["John", true, 30, 40, 50];
+numers[2] = 400;
+console.log(numers[0]);
+console.log(numers[1]);
+console.log(numers[2]);
+numers.push(60, "admin");
+console.log(numers);
