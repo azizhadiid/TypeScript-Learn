@@ -1,52 +1,122 @@
-let code: string | number;
-code = "Hello";
-code = 123;
-// code = true;
+// 1. Soal Beginner 
+class Person {
+    nama: string;
+    age: number;
 
-let empId: (string | number) | null;
-empId = "ini EMPID";
-empId = 123;
-empId = null;
+    constructor(nama: string, age: number) {
+        this.nama = nama;
+        this.age = age;
+    }
 
-function displayType(code: string | number) {
-    if (typeof code === "string") {
-        console.log(code.toUpperCase());
-    } else {
-        console.log(code.toFixed(2));
+    menampilkanInfo(): void {
+        console.log(`Nama Saya ${this.nama}, Berumur ${this.age}`);
     }
 }
 
-displayType(1234);
-displayType("Hello");
+const person1 = new Person("Aziz", 20);
+person1.menampilkanInfo();
 
-interface Fish {
-    swim(): void;
-    layEggs(): void;
+// 2. Soal Beginner
+class BankAccount {
+    private balance: number;
+
+    constructor(initialBalance: number) {
+        this.balance = initialBalance;
+    }
+
+    deposit(amount: number): void {
+        this.balance += amount;
+        console.log(`Deposit: ${amount}, New Belance: ${this.balance}`);
+    }
+
+    withdraw(amount: number): void {
+        if (amount > this.balance) {
+            console.log("Insufficient funds!");
+        } else {
+            this.balance -= amount;
+            console.log(`Withdraw: ${amount}, Remaining Belance: ${this.balance}`);
+        }
+    }
+
+    getBalance(): number {
+        return this.balance;
+    }
 }
 
-interface Bird {
-    fly(): void;
-    layEggs(): void;
+const account = new BankAccount(1000);
+account.deposit(500);
+account.withdraw(300);
+console.log(`Saldo saat ini adalah: ${account.getBalance()}`);
+
+// 3. Soal Intermediate
+class Vehicle {
+    brand: string;
+
+    constructor(brand: string) {
+        this.brand = brand;
+    }
+
+    move(): void {
+        console.log(`${this.brand} is moving`);
+    }
 }
 
-function getSmallPet(): Fish | Bird {
-    return {
-        swim: () => {
-            console.log("Swimming");
-        },
-        layEggs: () => {
-            console.log("laying eggs");
-        },
-    };
+class Car extends Vehicle {
+    move(): void {
+        console.log(`${this.brand} car is moving fast!`);
+    }
 }
 
-function isFish(pet: Fish | Bird): pet is Fish {
-    return (pet as Fish).swim !== undefined;
+const myCar = new Car("Toyota");
+myCar.move()
+
+// 4. Soal Intermediate
+abstract class Shape {
+    abstract calculateArea(): number;
 }
 
-let pet = getSmallPet();
-if (isFish(pet)) {
-    pet.swim();
-} else {
-    pet.layEggs();
+class Kotak extends Shape {
+    width: number;
+    height: number;
+
+    constructor(width: number, height: number) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+
+    calculateArea(): number {
+        return this.width * this.height;
+    }
 }
+
+const myKotak = new Kotak(30, 4);
+console.log(`Luas adalah: ${myKotak.calculateArea()}`);
+
+// 5. Soal Intermediate
+interface Animal {
+    makeSound(): void;
+}
+
+class Dog implements Animal {
+    makeSound(): void {
+        console.log("Woof! Woof!");
+    }
+}
+
+class Cat implements Animal {
+    makeSound(): void {
+        console.log("Meow! Meow!");
+    }
+}
+
+function animalSound(animal: Animal) {
+    animal.makeSound();
+}
+
+const myDog = new Dog();
+const myCat = new Cat();
+
+animalSound(myDog); // Output: Woof! Woof!
+animalSound(myCat); // Output: Meow! Meow!
+
