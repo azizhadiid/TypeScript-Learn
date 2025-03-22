@@ -1,68 +1,82 @@
 // 1. Soal Beginner
-let tambah = (a: number, b: number): number => {
-    return a + b;
+interface Person {
+    name: string;
+    age: number;
+}
+
+const person1: Person = {
+    name: "Aziz",
+    age: 20
 };
 
-console.log(tambah(5, 10)); // Output: 15
+console.log(person1);
 
 // 2. Soal Beginner
-let greet = (name: string, message?: string): string => {
-    return `${message ?? "Hello"}, ${name}!`;
+interface Product {
+    name: string;
+    price: number;
+    discount?: number;
 }
 
-console.log(greet("John"));        // Output: Hello, John!
-console.log(greet("Jane", "Hi"));  // Output: Hi, Jane!
-
-// 3. Soal Intermediate
-let calculatorArea = (width: number = 1, height: number = 1): number => {
-    return width * height;
-}
-
-console.log(calculatorArea());         // Output: 1 (karena default width=1 dan height=1)
-console.log(calculatorArea(5));        // Output: 5 (karena height=1 default)
-console.log(calculatorArea(5, 10));    // Output: 50
-
-// 4. Soal Intermediate
-let operator = (a: number, b: number, callback: (x: number, y: number) => number): number => {
-    return callback(a, b);
-}
-
-const add = (x: number, y: number) => x + y;
-const multiply = (x: number, y: number) => x * y;
-
-console.log(operator(5, 3, add));       // Output: 8 (5 + 3)
-console.log(operator(5, 3, multiply));  // Output: 15 (5 * 3)
-
-// 5. Soal Intermediate
-let format = (value: string | number): string => {
-    if (typeof value === "string") {
-        return value.toUpperCase();
-    } else {
-        return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(value);
-    }
-}
-
-console.log(format("hello"));  // Output: HELLO
-console.log(format(10000));    // Output: Rp10.000,00
-
-// 6. Soal Intermediate
-const createMultiplier = (factor: number): (num: number) => number => {
-    return (num: number) => num * factor;
+const product1: Product = {
+    name: "Laptop",
+    price: 15000000
 };
 
-const double = createMultiplier(2);
-const triple = createMultiplier(3);
+const product2: Product = {
+    name: "Smartphone",
+    price: 7000000,
+    discount: 10
+};
 
-console.log(double(5)); // Output: 10 (5 * 2)
-console.log(triple(5)); // Output: 15 (5 * 3)
+console.log(product1);
+console.log(product2);
 
-// 7. Soal Intermediate
-let factorial = (n: number): number => {
-    if (n === 0 || n === 1) {
-        return 1;
-    }
-    return n * factorial(n - 1);
+// 3. Soal Intermediate
+interface MathOperation {
+    calculate: (a: number, b: number) => number;
 }
-console.log(factorial(5)); // Output: 120
-console.log(factorial(7)); // Output: 5040
-console.log(factorial(0)); // Output: 1
+
+const addition: MathOperation = {
+    calculate: (a, b) => a + b
+};
+
+const multiplication: MathOperation = {
+    calculate: (a, b) => a * b
+};
+
+console.log(addition.calculate(5, 3)); // Output: 8
+console.log(multiplication.calculate(5, 3)); // Output: 15
+
+// 4. Soal Intermediate
+interface Animal {
+    name: string;
+    age: number;
+}
+
+interface Dog extends Animal {
+    breed: string;
+}
+
+const myDog: Dog = {
+    name: "Buddy",
+    age: 3,
+    breed: "Golden Retriever"
+};
+
+console.log(myDog);
+
+interface User {
+    readonly id: number;
+    username: string;
+}
+
+const user1: User = {
+    id: 101,
+    username: "john_doe"
+};
+
+console.log(user1);
+
+// Coba ubah id (ini akan error)
+// user1.id = 102; // Error: Cannot assign to 'id' because it is a read-only property.

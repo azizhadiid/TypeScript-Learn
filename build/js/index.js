@@ -1,56 +1,38 @@
 "use strict";
-// 1. Soal Beginner
-let tambah = (a, b) => {
-    return a + b;
+const person1 = {
+    name: "Aziz",
+    age: 20
 };
-console.log(tambah(5, 10)); // Output: 15
-// 2. Soal Beginner
-let greet = (name, message) => {
-    return `${message ?? "Hello"}, ${name}!`;
+console.log(person1);
+const product1 = {
+    name: "Laptop",
+    price: 15000000
 };
-console.log(greet("John")); // Output: Hello, John!
-console.log(greet("Jane", "Hi")); // Output: Hi, Jane!
-// 3. Soal Intermediate
-let calculatorArea = (width = 1, height = 1) => {
-    return width * height;
+const product2 = {
+    name: "Smartphone",
+    price: 7000000,
+    discount: 10
 };
-console.log(calculatorArea()); // Output: 1 (karena default width=1 dan height=1)
-console.log(calculatorArea(5)); // Output: 5 (karena height=1 default)
-console.log(calculatorArea(5, 10)); // Output: 50
-// 4. Soal Intermediate
-let operator = (a, b, callback) => {
-    return callback(a, b);
+console.log(product1);
+console.log(product2);
+const addition = {
+    calculate: (a, b) => a + b
 };
-const add = (x, y) => x + y;
-const multiply = (x, y) => x * y;
-console.log(operator(5, 3, add)); // Output: 8 (5 + 3)
-console.log(operator(5, 3, multiply)); // Output: 15 (5 * 3)
-// 5. Soal Intermediate
-let format = (value) => {
-    if (typeof value === "string") {
-        return value.toUpperCase();
-    }
-    else {
-        return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(value);
-    }
+const multiplication = {
+    calculate: (a, b) => a * b
 };
-console.log(format("hello")); // Output: HELLO
-console.log(format(10000)); // Output: Rp10.000,00
-// 6. Soal Intermediate
-const createMultiplier = (factor) => {
-    return (num) => num * factor;
+console.log(addition.calculate(5, 3)); // Output: 8
+console.log(multiplication.calculate(5, 3)); // Output: 15
+const myDog = {
+    name: "Buddy",
+    age: 3,
+    breed: "Golden Retriever"
 };
-const double = createMultiplier(2);
-const triple = createMultiplier(3);
-console.log(double(5)); // Output: 10 (5 * 2)
-console.log(triple(5)); // Output: 15 (5 * 3)
-// 7. Soal Intermediate
-let factorial = (n) => {
-    if (n === 0 || n === 1) {
-        return 1;
-    }
-    return n * factorial(n - 1);
+console.log(myDog);
+const user1 = {
+    id: 101,
+    username: "john_doe"
 };
-console.log(factorial(5)); // Output: 120
-console.log(factorial(7)); // Output: 5040
-console.log(factorial(0)); // Output: 1
+console.log(user1);
+// Coba ubah id (ini akan error)
+// user1.id = 102; // Error: Cannot assign to 'id' because it is a read-only property.
