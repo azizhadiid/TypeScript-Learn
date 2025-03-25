@@ -1,82 +1,76 @@
 // 1. Soal Beginner
-interface Person {
-    name: string;
-    age: number;
+namespace MathOperations {
+    export function add(a: number, b: number): number {
+        return a + b;
+    }
+
+    export function subtract(a: number, b: number): number {
+        return a - b;
+    }
 }
 
-const person1: Person = {
-    name: "Aziz",
-    age: 20
-};
-
-console.log(person1);
+// Menggunakan namespace
+console.log(MathOperations.add(10, 5));       // Output: 15
+console.log(MathOperations.subtract(10, 5));  // Output: 5
 
 // 2. Soal Beginner
-interface Product {
-    name: string;
-    price: number;
-    discount?: number;
+namespace UserManagement {
+    export interface User {
+        id: number;
+        name: string;
+        email: string;
+    }
+
+    export function createUser(user: User): void {
+        console.log(`User Created: ${user.name} ${user.email}`);
+    }
 }
 
-const product1: Product = {
-    name: "Laptop",
-    price: 15000000
+// Mengecek menggunakan namespace
+const newUser: UserManagement.User = {
+    id: 1,
+    name: "Aziz Alhadiid",
+    email: "aziz@gmail.com"
 };
 
-const product2: Product = {
-    name: "Smartphone",
-    price: 7000000,
-    discount: 10
-};
-
-console.log(product1);
-console.log(product2);
+UserManagement.createUser(newUser);
 
 // 3. Soal Intermediate
-interface MathOperation {
-    calculate: (a: number, b: number) => number;
-}
+import { MathUtils } from "./math";
 
-const addition: MathOperation = {
-    calculate: (a, b) => a + b
-};
-
-const multiplication: MathOperation = {
-    calculate: (a, b) => a * b
-};
-
-console.log(addition.calculate(5, 3)); // Output: 8
-console.log(multiplication.calculate(5, 3)); // Output: 15
+console.log(MathUtils.multiply(10, 5)); // Output: 20
 
 // 4. Soal Intermediate
-interface Animal {
-    name: string;
-    age: number;
+namespace Company {
+    export namespace Departments {
+        export function getDepartmentName(id: number): string {
+            const departments: { [key: number]: string } = {
+                1: "HR",
+                2: "IT",
+                3: "Finance"
+            };
+            return departments[id] || "Tidak Ada";
+        }
+    }
 }
 
-interface Dog extends Animal {
-    breed: string;
+// Menggunakan namespace bersarang
+console.log(Company.Departments.getDepartmentName(2));  // Output: IT
+console.log(Company.Departments.getDepartmentName(5));  // Output: Unknown
+
+// 5. Soal Intermediate
+namespace Geometry {
+    export function circleArea(radius: number): number {
+        return Math.PI * radius * radius;
+    }
+
+    export function squareArea(side: number): number {
+        return side * side;
+    }
 }
 
-const myDog: Dog = {
-    name: "Buddy",
-    age: 3,
-    breed: "Golden Retriever"
-};
+// Menggunakan alias
+import G = Geometry;
 
-console.log(myDog);
-
-interface User {
-    readonly id: number;
-    username: string;
-}
-
-const user1: User = {
-    id: 101,
-    username: "john_doe"
-};
-
-console.log(user1);
-
-// Coba ubah id (ini akan error)
-// user1.id = 102; // Error: Cannot assign to 'id' because it is a read-only property.
+console.log(G.circleArea(7));   // Output: 153.93804002589985
+console.log(G.squareArea(5));   // Output: 25
